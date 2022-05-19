@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }} </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="py-5">
+    <div class="container">
+      <div class="row hidden-md-up">
+
+          {% for bebe in bebes %}
+          <div class="col-md-4">
+          <div class="card" style="margin-bottom: 20px;">
+            <div class="card-block">
+                <img class="card-img-top" src="{{ bebe.foto_perfil }}" alt="{{ bebe.nombre }}" onclick="play_video('{{bebe.nombre}}');" id="img-{{bebe.nombre}}">
+              <h4 class="card-title" style="padding: 5px;">{{ bebe.nombre }}</h4>
+                {% if bebe.born %}
+              <h6 class="card-subtitle text-muted" style="padding: 5px;">Cumpleaños {{ bebe.date_fin }}</h6>
+                {% else %}
+              <h6 class="card-subtitle text-muted" style="padding: 5px;">Fecha de parto {{ bebe.date_fin }}</h6>
+                {% endif %}
+
+                <div class="progress" style="margin: 5px;">
+                    {% if bebe.progress < 25 %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{bebe.progress}}%" aria-valuenow="{{bebe.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% elif bebe.progress < 50 %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{bebe.progress}}%" aria-valuenow="{{bebe.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% elif bebe.progress < 75 %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: {{bebe.progress}}%" aria-valuenow="{{bebe.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% elif bebe.progress < 90 %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{bebe.progress}}%" aria-valuenow="{{bebe.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% else %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{bebe.progress}}%" aria-valuenow="{{bebe.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% endif %}
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+         {% endfor %}
+      </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+
+</body>
+</html>
