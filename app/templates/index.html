@@ -18,7 +18,7 @@
                 <img class="card-img-top" src="{{ bebe.foto_perfil }}" alt="{{ bebe.nombre }}" onclick="play_video('{{bebe.nombre}}');" id="img-{{bebe.nombre}}">
               <h4 class="card-title" style="padding: 5px;">{{ bebe.nombre }}</h4>
                 {% if bebe.born %}
-              <h6 class="card-subtitle text-muted" style="padding: 5px;">Cumpleaños {{ bebe.date_fin }}</h6>
+              <h6 class="card-subtitle text-muted" style="padding: 5px;">Cumple {{bebe.edad}} el {{ bebe.date_fin }}</h6>
                 {% else %}
               <h6 class="card-subtitle text-muted" style="padding: 5px;">Fecha de parto {{ bebe.date_fin }}</h6>
                 {% endif %}

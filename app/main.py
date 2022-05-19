@@ -25,7 +25,10 @@ class Bebe:
         cumple_date = datetime.strptime(cumple, '%d/%m/%Y')
         today = datetime.today()
 
+        self.edad = current_year - int(parts[2])
+
         if today >= cumple_date:
+            self.edad += 1
             self.date_fin = f'{parts[0]}/{parts[1]}/{current_year+1}'
             cumple_date = datetime.strptime(self.date_fin, '%d/%m/%Y')
         else:
@@ -34,10 +37,7 @@ class Bebe:
         dif_dates = (cumple_date - today).days
         self.progress = int(((365 - dif_dates)/365) * 100)
 
-        if self.progress < 25:
-            self.color = 'red'
-        elif self.progress < 50:
-            self.color = ''
+
 
 
 def get_bebes():
